@@ -24,6 +24,9 @@
 		6354A2461AAC4E9B00E88BAC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A2451AAC4E9B00E88BAC /* Security.framework */; };
 		6354A2481AAC4EA700E88BAC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A2471AAC4EA700E88BAC /* SystemConfiguration.framework */; };
 		637E617D1AAC6D86009D95E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E617C1AAC6D86009D95E1 /* Message.swift */; };
+		637E61851AACBCC8009D95E1 /* VLDContextSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E61801AACBCC8009D95E1 /* VLDContextSheet.m */; };
+		637E61861AACBCC8009D95E1 /* VLDContextSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E61821AACBCC8009D95E1 /* VLDContextSheetItem.m */; };
+		637E61871AACBCC8009D95E1 /* VLDContextSheetItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E61841AACBCC8009D95E1 /* VLDContextSheetItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,12 @@
 		6354A2451AAC4E9B00E88BAC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6354A2471AAC4EA700E88BAC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		637E617C1AAC6D86009D95E1 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		637E617F1AACBCC8009D95E1 /* VLDContextSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDContextSheet.h; sourceTree = "<group>"; };
+		637E61801AACBCC8009D95E1 /* VLDContextSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheet.m; sourceTree = "<group>"; };
+		637E61811AACBCC8009D95E1 /* VLDContextSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDContextSheetItem.h; sourceTree = "<group>"; };
+		637E61821AACBCC8009D95E1 /* VLDContextSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheetItem.m; sourceTree = "<group>"; };
+		637E61831AACBCC8009D95E1 /* VLDContextSheetItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDContextSheetItemView.h; sourceTree = "<group>"; };
+		637E61841AACBCC8009D95E1 /* VLDContextSheetItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheetItemView.m; sourceTree = "<group>"; };
 		8A3AF20E59A113B097F92E98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BFE60E4353084E5519D829 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +100,7 @@
 		179534E9B168E3C2F0A02E3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				637E617E1AACBCC8009D95E1 /* VLDContextSheet */,
 				6354A2471AAC4EA700E88BAC /* SystemConfiguration.framework */,
 				6354A2451AAC4E9B00E88BAC /* Security.framework */,
 				6354A2431AAC4E8A00E88BAC /* CFNetwork.framework */,
@@ -163,6 +173,19 @@
 				631CF68D1AA96F1500CF3A04 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		637E617E1AACBCC8009D95E1 /* VLDContextSheet */ = {
+			isa = PBXGroup;
+			children = (
+				637E617F1AACBCC8009D95E1 /* VLDContextSheet.h */,
+				637E61801AACBCC8009D95E1 /* VLDContextSheet.m */,
+				637E61811AACBCC8009D95E1 /* VLDContextSheetItem.h */,
+				637E61821AACBCC8009D95E1 /* VLDContextSheetItem.m */,
+				637E61831AACBCC8009D95E1 /* VLDContextSheetItemView.h */,
+				637E61841AACBCC8009D95E1 /* VLDContextSheetItemView.m */,
+			);
+			path = VLDContextSheet;
 			sourceTree = "<group>";
 		};
 		CF46A62470D7C61EB7309246 /* Pods */ = {
@@ -314,8 +337,11 @@
 			files = (
 				631CF67B1AA96F1400CF3A04 /* ViewController.swift in Sources */,
 				637E617D1AAC6D86009D95E1 /* Message.swift in Sources */,
+				637E61851AACBCC8009D95E1 /* VLDContextSheet.m in Sources */,
 				631CF6791AA96F1400CF3A04 /* AppDelegate.swift in Sources */,
+				637E61871AACBCC8009D95E1 /* VLDContextSheetItemView.m in Sources */,
 				6354A23D1AAAC83200E88BAC /* FacebookLoginViewController.swift in Sources */,
+				637E61861AACBCC8009D95E1 /* VLDContextSheetItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
