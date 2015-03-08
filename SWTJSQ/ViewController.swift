@@ -134,9 +134,19 @@ class ViewController: JSQMessagesViewController {
 //        self.autoRecieveMessage()
     }
     
+    func popUpFunction(gesture: UIGestureRecognizer) {
+        if gesture.state == UIGestureRecognizerState.Began {
+            println("pan began")
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.collectionViewLayout.springinessEnabled = true
+        
+        // testing
+        var panGes: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "popUpFunction:")
+        self.inputToolbar.contentView.leftBarButtonItem.addGestureRecognizer(panGes)
     }
     
     
