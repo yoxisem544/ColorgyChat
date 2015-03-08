@@ -10,5 +10,8 @@
 #define SWTJSQ_BridgingHeader_h
 
 #import "JSQMessages.h"
+#import <FacebookSDK/FacebookSDK.h>
+
+#import <Firebase/Firebase.h>
 
 #endif
