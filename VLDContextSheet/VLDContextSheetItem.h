@@ -6,12 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h> 
 
 @interface VLDContextSheetItem : NSObject
 
-- (id) initWithTitle: (NSString *) title
-               image: (UIImage *) image
-    highlightedImage: (UIImage *) highlightedImage;
+- (id) initWithTitle: (NSString *) title image:(UIImage *) image highlightedImage: (UIImage *) highlightedImage;
 
 @property (strong, readonly) NSString *title;
 @property (strong, readonly) UIImage *image;

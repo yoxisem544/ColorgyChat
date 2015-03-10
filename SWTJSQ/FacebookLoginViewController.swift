@@ -11,6 +11,8 @@ import UIKit
 class FacebookLoginViewController: UIViewController, FBLoginViewDelegate {
     
     var hi: FBProfilePictureView!
+    var userId: NSString!
+    
     @IBOutlet var profilePhoto: FBProfilePictureView!
     
     override func viewDidLoad() {
@@ -18,28 +20,46 @@ class FacebookLoginViewController: UIViewController, FBLoginViewDelegate {
         
         println("view did load")
         
+        FBSession.activeSession().closeAndClearTokenInformation()
+        
         var loginView = FBLoginView()
         loginView.center = self.view.center
-        self.view.addSubview(loginView)
-        
         loginView.delegate = self
-        
-        var completionHandle = {connection, result, error in} as FBRequestHandler
-        
+        self.view.addSubview(loginView)
     }
     
     func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
         self.profilePhoto.profileID = user.objectID
         
-        println("/\(self.profilePhoto.profileID)/?fields=feed.limit=(1)")
+//        println("/\(self.profilePhoto.profileID)/?fields=feed.limit=(1)")
+        
+        if user.objectID != "" {
+            println("push~")
+            self.performSegueWithIdentifier("loginSegue", sender: self)
+        }
         
         FBRequestConnection.startWithGraphPath("/\(self.profilePhoto.profileID)/?fields=feed.limit=(1)", completionHandler: { (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
             if (result? != nil) {
-                println(connection)
+//                println(connection)
                 println("yeah")
+                
             } else {
                 println("nono")
             }
         })
     }
+    
+    func loginViewShowingLoggedInUser(loginView: FBLoginView!) {
+        println("HIHI")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "loginSegue" {
+            println("OK pus login")
+            var vc: ViewController = segue.destinationViewController as ViewController
+            vc.performLogin(self.profilePhoto.profileID)
+            println(self.profilePhoto.profileID)
+        }
+    }
+    
 }

@@ -5,36 +5,6 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="JrY-Hq-171">
-            <objects>
-                <viewController id="rck-uF-buO" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AwL-m4-Z1g"/>
-                        <viewControllerLayoutGuide type="bottom" id="2jO-3m-9vY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="e81-8U-p8p">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h97-Xk-pbu">
-                                <rect key="frame" x="86" y="187" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" id="M7e-03-mQ5"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="e4l-mL-5v2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZW9-XF-jbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="689" y="151"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="SWTJSQ" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-129" y="747"/>
+            <point key="canvasLocation" x="955" y="41"/>
         </scene>
         <!--Facebook Login View Controller-->
         <scene sceneID="O7b-pV-HQ0">
@@ -72,13 +42,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QY7-Ue-ng8"/>
                     <connections>
                         <outlet property="profilePhoto" destination="XWw-hk-1nA" id="IH4-6V-3jo"/>
+                        <segue destination="vXZ-lx-hvc" kind="push" identifier="loginSegue" id="6Zb-9T-rIO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l06-8g-KAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1363" y="747"/>
+            <point key="canvasLocation" x="235" y="41"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gaw-vy-YzJ">
@@ -91,7 +63,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="rck-uF-buO" kind="relationship" relationship="rootViewController" id="Afz-LG-6mT"/>
+                        <segue destination="qOV-C7-Ih4" kind="relationship" relationship="rootViewController" id="w0Z-0s-LTV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ql9-YL-eYa" userLabel="First Responder" sceneMemberID="firstResponder"/>

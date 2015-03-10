@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: JSQMessagesViewController {
+class ViewController: JSQMessagesViewController, VLDContextSheetDelegate {
 
     var messages = [Message]()
     var incomingBubble: JSQMessagesBubbleImage!
@@ -24,6 +24,23 @@ class ViewController: JSQMessagesViewController {
     
     // unknown message setting
     var batchMessages = true
+    
+    // context sheet
+    var contextSheet: VLDContextSheet!
+    
+    // login section
+    var loginUserName: NSString!
+    func performLogin(id: NSString) {
+        println("perform for logining in FB")
+        println("fuck")
+        println(id)
+        self.loginUserName = id
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        FBSession.activeSession().closeAndClearTokenInformation()
+    }
     
     func setupFirebase() {
         messageRef = Firebase(url: "https://colorgy-chat.firebaseio.com/messages")
@@ -103,7 +120,9 @@ class ViewController: JSQMessagesViewController {
         automaticallyScrollsToMostRecentMessage = true
         
         // user infos
-        self.senderId = "DavidLIN"
+//        self.senderId = "DavidLIN"
+        println(self.loginUserName)
+        self.senderId = self.loginUserName
         self.senderDisplayName = "David Lin"
         
         // setup messages
@@ -111,7 +130,7 @@ class ViewController: JSQMessagesViewController {
         
         // firebase testing region
         // yoxisem544 profile picture
-        self.userAvatarUrl = "https://graph.facebook.com/960062850693502/picture?width=64&height=64"
+        self.userAvatarUrl = "https://graph.facebook.com/\(self.senderId)/picture?width=64&height=64"
         // chuan
 //        self.userAvatarUrl = "https://graph.facebook.com/100000329912167/picture?width=64&height=64"
         self.userNickName = "HEYYO!"
@@ -131,13 +150,43 @@ class ViewController: JSQMessagesViewController {
         
         self.setupFirebase()
         
+        //setup contextsheet
+        self.createContextSheet()
+        self.navigationController?.interactivePopGestureRecognizer.enabled = false
 //        self.autoRecieveMessage()
     }
     
     func popUpFunction(gesture: UIGestureRecognizer) {
         if gesture.state == UIGestureRecognizerState.Began {
             println("pan began")
+            self.contextSheet.startWithGestureRecognizer(gesture, inView: self.view)
         }
+    }
+    
+    func longPress(gesture: UIGestureRecognizer) {
+        if gesture.state ==  UIGestureRecognizerState.Began {
+            var point: CGPoint = gesture.locationInView(self.collectionView)
+            let path: NSIndexPath! = self.collectionView.indexPathForItemAtPoint(point)?
+            if path == nil {
+                println("nil class")
+            } else {
+                println("path \(path.item)")
+                self.contextSheet.startWithGestureRecognizer(gesture, inView: self.view)
+            }
+            
+        }
+    }
+    
+    func createContextSheet () {
+        var item1: VLDContextSheetItem = VLDContextSheetItem(title: "Gift", image: UIImage(named: "gift_button@2x.png"), highlightedImage: UIImage(named: "gift_button2@2x.png"))
+        var item2: VLDContextSheetItem = VLDContextSheetItem(title: "Share", image: UIImage(named: "share_button@2x.png"), highlightedImage: UIImage(named: "share_button2@2x.png"))
+        var item3: VLDContextSheetItem = VLDContextSheetItem(title: "Add", image: UIImage(named: "add_to_collection_button@2x.png"), highlightedImage: UIImage(named: "add_to_collection_button2@2x.png"))
+        self.contextSheet = VLDContextSheet(items: [item1, item2, item3])
+        self.contextSheet.delegate = self
+    }
+    
+    func contextSheet(contextSheet: VLDContextSheet!, didSelectItem item: VLDContextSheetItem!) {
+        println("on item \(item.title)")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -147,6 +196,9 @@ class ViewController: JSQMessagesViewController {
         // testing
         var panGes: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "popUpFunction:")
         self.inputToolbar.contentView.leftBarButtonItem.addGestureRecognizer(panGes)
+        
+        var longPress: UIGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
+        self.collectionView.addGestureRecognizer(longPress)
     }
     
     
@@ -184,7 +236,6 @@ class ViewController: JSQMessagesViewController {
     // set bubble image
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
 //        var message: JSQMessage = self.messages[indexPath.item] as JSQMessage
-        println("enter bubble")
         var bubble = JSQMessagesBubbleImageFactory()
         if messages[indexPath.item].senderId() == self.senderId {
             return bubble.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
@@ -240,7 +291,10 @@ class ViewController: JSQMessagesViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath!) {
+        println("on \(indexPath.item)")
+    }
 
 }
 

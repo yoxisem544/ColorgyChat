@@ -14,4 +14,7 @@
 
 #import <Firebase/Firebase.h>
 
+#import "VLDContextSheet.h"
+#import "VLDContextSheetItem.h"
+
 #endif
