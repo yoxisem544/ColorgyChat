@@ -16,13 +16,13 @@
 		631CF68F1AA96F1500CF3A04 /* SWTJSQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631CF68E1AA96F1500CF3A04 /* SWTJSQTests.swift */; };
 		63549E7A1AA9CE2500E88BAC /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 63549E781AA9CE2500E88BAC /* 2.png */; };
 		63549E7B1AA9CE2500E88BAC /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 63549E791AA9CE2500E88BAC /* 1.png */; };
-		6354A23B1AAA878700E88BAC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A23A1AAA878700E88BAC /* FacebookSDK.framework */; };
 		6354A23D1AAAC83200E88BAC /* FacebookLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354A23C1AAAC83200E88BAC /* FacebookLoginViewController.swift */; };
 		6354A2401AAC4E6900E88BAC /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A23F1AAC4E6900E88BAC /* libc++.dylib */; };
 		6354A2421AAC4E7E00E88BAC /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A2411AAC4E7E00E88BAC /* libicucore.dylib */; };
 		6354A2441AAC4E8A00E88BAC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A2431AAC4E8A00E88BAC /* CFNetwork.framework */; };
 		6354A2461AAC4E9B00E88BAC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A2451AAC4E9B00E88BAC /* Security.framework */; };
 		6354A2481AAC4EA700E88BAC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A2471AAC4EA700E88BAC /* SystemConfiguration.framework */; };
+		636C2EDC1AAF32C500C629E4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636C2EDB1AAF32C500C629E4 /* FacebookSDK.framework */; };
 		637E617D1AAC6D86009D95E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E617C1AAC6D86009D95E1 /* Message.swift */; };
 		637E61851AACBCC8009D95E1 /* VLDContextSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E61801AACBCC8009D95E1 /* VLDContextSheet.m */; };
 		637E61861AACBCC8009D95E1 /* VLDContextSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E61821AACBCC8009D95E1 /* VLDContextSheetItem.m */; };
@@ -71,13 +71,13 @@
 		63549E771AA97DBB00E88BAC /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		63549E781AA9CE2500E88BAC /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		63549E791AA9CE2500E88BAC /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		6354A23A1AAA878700E88BAC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		6354A23C1AAAC83200E88BAC /* FacebookLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginViewController.swift; sourceTree = "<group>"; };
 		6354A23F1AAC4E6900E88BAC /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		6354A2411AAC4E7E00E88BAC /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		6354A2431AAC4E8A00E88BAC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6354A2451AAC4E9B00E88BAC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6354A2471AAC4EA700E88BAC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		636C2EDB1AAF32C500C629E4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		637E617C1AAC6D86009D95E1 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		637E617F1AACBCC8009D95E1 /* VLDContextSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDContextSheet.h; sourceTree = "<group>"; };
 		637E61801AACBCC8009D95E1 /* VLDContextSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheet.m; sourceTree = "<group>"; };
@@ -112,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				637E618D1AACBD61009D95E1 /* UIKit.framework in Frameworks */,
+				636C2EDC1AAF32C500C629E4 /* FacebookSDK.framework in Frameworks */,
 				637E618B1AACBD5A009D95E1 /* CoreGraphics.framework in Frameworks */,
 				637E61891AACBD50009D95E1 /* Foundation.framework in Frameworks */,
 				6354A2481AAC4EA700E88BAC /* SystemConfiguration.framework in Frameworks */,
@@ -120,7 +121,6 @@
 				6354A2421AAC4E7E00E88BAC /* libicucore.dylib in Frameworks */,
 				6354A2401AAC4E6900E88BAC /* libc++.dylib in Frameworks */,
 				50DCA9DE47658754866952CF /* libPods.a in Frameworks */,
-				6354A23B1AAA878700E88BAC /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,8 +145,8 @@
 				6354A2451AAC4E9B00E88BAC /* Security.framework */,
 				6354A2431AAC4E8A00E88BAC /* CFNetwork.framework */,
 				6354A2411AAC4E7E00E88BAC /* libicucore.dylib */,
+				636C2EDB1AAF32C500C629E4 /* FacebookSDK.framework */,
 				6354A23F1AAC4E6900E88BAC /* libc++.dylib */,
-				6354A23A1AAA878700E88BAC /* FacebookSDK.framework */,
 				8A3AF20E59A113B097F92E98 /* libPods.a */,
 			);
 			name = Frameworks;

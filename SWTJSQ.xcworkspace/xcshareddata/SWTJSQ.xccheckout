@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E6A6F937-EFED-417D-8A80-3C4F1B37D31B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SWTJSQ</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>13CBC7F9C9E0979BEB39DD2E41A31DFE7AABC5D4</key>
+		<string>https://github.com/yoxisem544/ColorgyChat.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SWTJSQ.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>13CBC7F9C9E0979BEB39DD2E41A31DFE7AABC5D4</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yoxisem544/ColorgyChat.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>13CBC7F9C9E0979BEB39DD2E41A31DFE7AABC5D4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>13CBC7F9C9E0979BEB39DD2E41A31DFE7AABC5D4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SWTJSQ</string>
+		</dict>
+	</array>
+</dict>
+</plist>
