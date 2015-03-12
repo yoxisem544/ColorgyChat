@@ -23,6 +23,7 @@
 		6354A2461AAC4E9B00E88BAC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A2451AAC4E9B00E88BAC /* Security.framework */; };
 		6354A2481AAC4EA700E88BAC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354A2471AAC4EA700E88BAC /* SystemConfiguration.framework */; };
 		636C2EDC1AAF32C500C629E4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636C2EDB1AAF32C500C629E4 /* FacebookSDK.framework */; };
+		6379C41F1AB0A42F004B01C3 /* ano.png in Resources */ = {isa = PBXBuildFile; fileRef = 6379C41E1AB0A42F004B01C3 /* ano.png */; };
 		637E617D1AAC6D86009D95E1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E617C1AAC6D86009D95E1 /* Message.swift */; };
 		637E61851AACBCC8009D95E1 /* VLDContextSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E61801AACBCC8009D95E1 /* VLDContextSheet.m */; };
 		637E61861AACBCC8009D95E1 /* VLDContextSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 637E61821AACBCC8009D95E1 /* VLDContextSheetItem.m */; };
@@ -78,6 +79,7 @@
 		6354A2451AAC4E9B00E88BAC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6354A2471AAC4EA700E88BAC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		636C2EDB1AAF32C500C629E4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		6379C41E1AB0A42F004B01C3 /* ano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ano.png; sourceTree = "<group>"; };
 		637E617C1AAC6D86009D95E1 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		637E617F1AACBCC8009D95E1 /* VLDContextSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDContextSheet.h; sourceTree = "<group>"; };
 		637E61801AACBCC8009D95E1 /* VLDContextSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheet.m; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				637E618E1AACBF51009D95E1 /* image */,
 				63549E781AA9CE2500E88BAC /* 2.png */,
+				6379C41E1AB0A42F004B01C3 /* ano.png */,
 				63549E791AA9CE2500E88BAC /* 1.png */,
 				63549E771AA97DBB00E88BAC /* BridgingHeader.h */,
 				631CF6751AA96F1400CF3A04 /* SWTJSQ */,
@@ -419,6 +422,7 @@
 				631CF6831AA96F1400CF3A04 /* LaunchScreen.xib in Resources */,
 				63549E7A1AA9CE2500E88BAC /* 2.png in Resources */,
 				637E61A91AACBF5E009D95E1 /* Contents.json in Resources */,
+				6379C41F1AB0A42F004B01C3 /* ano.png in Resources */,
 				637E61B11AACBF5E009D95E1 /* Contents.json in Resources */,
 				637E61AC1AACBF5E009D95E1 /* Contents.json in Resources */,
 				631CF6801AA96F1400CF3A04 /* Images.xcassets in Resources */,

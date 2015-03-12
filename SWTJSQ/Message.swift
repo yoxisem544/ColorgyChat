@@ -16,13 +16,21 @@ class Message: NSObject {
     var isMediaMessage_: String
     var mediaDataUrl_: String
     
-    init(isMediaMessage: String?, text: String?, senderId: String?, senderDisplayName: String?, avatarImageUrl: String?, mediaDataUrl: String?) {
+    // anonymous region
+    var isAnony_: String
+    var anonyAvatar_: String
+    var senderAnonymousName_: String
+    
+    init(isMediaMessage: String?, text: String?, senderId: String?, senderDisplayName: String?, avatarImageUrl: String?, mediaDataUrl: String?, isAnony: String?, anonyAvatar: String?, senderAnonymousName: String?) {
         self.text_ = text!
         self.senderId_ = senderId!
         self.senderDisplayName_ = senderDisplayName!
         self.isMediaMessage_ = isMediaMessage!
         self.avatarImageUrl_ = avatarImageUrl!
         self.mediaDataUrl_ = mediaDataUrl!
+        self.isAnony_ = isAnony!
+        self.anonyAvatar_ = anonyAvatar!
+        self.senderAnonymousName_ = senderAnonymousName!
     }
     
     func text() -> String! {
@@ -47,6 +55,18 @@ class Message: NSObject {
     
     func mediaDataUrl() -> String! {
         return mediaDataUrl_
+    }
+    
+    func isAnony() -> String! {
+        return isAnony_
+    }
+    
+    func anonyAvatar() -> String! {
+        return anonyAvatar_
+    }
+    
+    func senderAnonymousName() -> String! {
+        return senderAnonymousName_
     }
     
 }

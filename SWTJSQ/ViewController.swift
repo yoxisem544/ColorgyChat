@@ -22,6 +22,11 @@ class ViewController: JSQMessagesViewController, VLDContextSheetDelegate {
     var userAvatarUrl: String!
     var avatars = Dictionary<String, JSQMessagesAvatarImage>()
     
+    // anonymous region
+    var isAnony: String!
+    var anonyAvatar: String!
+    var userAnonymousName: String!
+    
     // unknown message setting
     var batchMessages = true
     
@@ -53,11 +58,15 @@ class ViewController: JSQMessagesViewController, VLDContextSheetDelegate {
             let avatarImageUrl = snapshot.value["avatarImageUrl"] as? String
             let isMediaMessage = snapshot.value["isMediaMessage"] as? String
             let mediaDataUrl = snapshot.value["mediaDataUrl"] as? String
+            let isAnony = snapshot.value["isAnony"] as? String
+            let anonyAvatar = snapshot.value["anonyAvatar"] as? String
+            let senderAnonymousName = snapshot.value["senderAnonymousName"] as? String
             
             if isMediaMessage == "true" {
                 
             } else if isMediaMessage == "false" {
-                var message: Message = Message(isMediaMessage: isMediaMessage, text: text, senderId: senderId, senderDisplayName: senderDisplayName, avatarImageUrl: avatarImageUrl, mediaDataUrl: mediaDataUrl)
+//                var message: Message = Message(isMediaMessage: isMediaMessage, text: text, senderId: senderId, senderDisplayName: senderDisplayName, avatarImageUrl: avatarImageUrl, mediaDataUrl: mediaDataUrl)
+                var message: Message = Message(isMediaMessage: isMediaMessage, text: text, senderId: senderId, senderDisplayName: senderDisplayName, avatarImageUrl: avatarImageUrl, mediaDataUrl: mediaDataUrl, isAnony: isAnony, anonyAvatar: anonyAvatar, senderAnonymousName: senderAnonymousName)
                 self.messages.append(message)
             } else {
                 
@@ -74,25 +83,39 @@ class ViewController: JSQMessagesViewController, VLDContextSheetDelegate {
             "senderDisplayName": self.userNickName,
             "avatarImageUrl": self.userAvatarUrl,
             "isMediaMessage": "false",
-            "mediaDataUrl": ""
+            "mediaDataUrl": "",
+            "isAnony": self.isAnony,
+            "anonyAvatar": self.isAnony == "true" ? "ano.png" : "",
+            "senderAnonymousName": self.userAnonymousName
         ])
     }
     
-    func setupAvatarImage(name: String, avatarImageUrl: String?, incoming: Bool) {
-        if let stringUrl = avatarImageUrl {
-            if let url = NSURL(string: stringUrl) {
-                if let data = NSData(contentsOfURL: url) {
-                    let avatarImage = UIImage(data: data)
-                    let diameter = incoming ? UInt(collectionView.collectionViewLayout.incomingAvatarViewSize.width) : UInt(collectionView.collectionViewLayout.outgoingAvatarViewSize.width)
-                    // got question here
-                    let avatarImageKey = JSQMessagesAvatarImageFactory.avatarImageWithImage(avatarImage, diameter: 64)
-                    avatars[name] = avatarImageKey
-                    return
+    func setupAvatarImage(name: String, avatarImageUrl: String?, incoming: Bool, isAnony: String?, anonyAvatar: String?) {
+        if isAnony == "false" {
+            if let stringUrl = avatarImageUrl {
+                if let url = NSURL(string: stringUrl) {
+                    if let data = NSData(contentsOfURL: url) {
+                        let avatarImage = UIImage(data: data)
+                        let diameter = incoming ? UInt(collectionView.collectionViewLayout.incomingAvatarViewSize.width) : UInt(collectionView.collectionViewLayout.outgoingAvatarViewSize.width)
+                        // got question here
+                        let avatarImageKey = JSQMessagesAvatarImageFactory.avatarImageWithImage(avatarImage, diameter: 64)
+                        avatars[name] = avatarImageKey
+                        return
+                    }
                 }
             }
+            
+            setupAvatarColor(name, incoming: incoming)
+            
+        } else {
+            setupAnonymousAvatar(name, anonyAvatar: anonyAvatar!, incoming: incoming)
         }
-        
-        setupAvatarColor(name, incoming: incoming)
+    }
+    
+    func setupAnonymousAvatar(name: String, anonyAvatar: String, incoming: Bool) {
+        let diameter = incoming ? UInt(collectionView.collectionViewLayout.incomingAvatarViewSize.width) : UInt(collectionView.collectionViewLayout.outgoingAvatarViewSize.width)
+        let avatarImageKey = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: anonyAvatar), diameter: 64)
+        avatars[name] = avatarImageKey
     }
     
     func setupAvatarColor(name: String, incoming: Bool) {
@@ -146,7 +169,11 @@ class ViewController: JSQMessagesViewController, VLDContextSheetDelegate {
         
         // firebase testing region
         senderId = (senderId != nil) ? senderId : "Anonymous"
-        setupAvatarImage(self.userNickName, avatarImageUrl: self.userAvatarUrl, incoming: false)
+//        setupAvatarImage(self.userNickName, avatarImageUrl: self.userAvatarUrl, incoming: false)
+        self.anonyAvatar = "ano.png"
+        self.isAnony = "true"
+        self.userAnonymousName = "Nick Tiger"
+        setupAvatarImage(self.userNickName, avatarImageUrl: self.userAvatarUrl, incoming: false, isAnony: self.isAnony, anonyAvatar: self.anonyAvatar)
         
         self.setupFirebase()
         
@@ -178,15 +205,22 @@ class ViewController: JSQMessagesViewController, VLDContextSheetDelegate {
     }
     
     func createContextSheet () {
-        var item1: VLDContextSheetItem = VLDContextSheetItem(title: "Gift", image: UIImage(named: "gift_button@2x.png"), highlightedImage: UIImage(named: "gift_button2@2x.png"))
+        var item1: VLDContextSheetItem = VLDContextSheetItem(title: "Anony!", image: UIImage(named: "gift_button@2x.png"), highlightedImage: UIImage(named: "gift_button2@2x.png"))
         var item2: VLDContextSheetItem = VLDContextSheetItem(title: "Share", image: UIImage(named: "share_button@2x.png"), highlightedImage: UIImage(named: "share_button2@2x.png"))
         var item3: VLDContextSheetItem = VLDContextSheetItem(title: "Add", image: UIImage(named: "add_to_collection_button@2x.png"), highlightedImage: UIImage(named: "add_to_collection_button2@2x.png"))
-        self.contextSheet = VLDContextSheet(items: [item1, item2, item3])
+        self.contextSheet = VLDContextSheet(items: [item1])
         self.contextSheet.delegate = self
     }
     
     func contextSheet(contextSheet: VLDContextSheet!, didSelectItem item: VLDContextSheetItem!) {
         println("on item \(item.title)")
+        if item.title == "Anony!" {
+            if self.isAnony == "true" {
+                self.isAnony = "false"
+            } else {
+                self.isAnony = "true"
+            }
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -228,8 +262,13 @@ class ViewController: JSQMessagesViewController, VLDContextSheetDelegate {
             var message = JSQMessage(senderId: messages[indexPath.item].senderId(), displayName: messages[indexPath.item].senderDisplayName(), media: media)
             return message as JSQMessageData
         } else {
-            var message = JSQMessage(senderId: messages[indexPath.item].senderId(), displayName: messages[indexPath.item].senderDisplayName(), text: messages[indexPath.item].text())
-            return message as JSQMessageData
+            if messages[indexPath.item].isAnony() == "true" {
+                var message = JSQMessage(senderId: messages[indexPath.item].senderId(), displayName: messages[indexPath.item].senderAnonymousName(), text: messages[indexPath.item].text())
+                return message as JSQMessageData
+            } else {
+                var message = JSQMessage(senderId: messages[indexPath.item].senderId(), displayName: messages[indexPath.item].senderDisplayName(), text: messages[indexPath.item].text())
+                return message as JSQMessageData
+            }
         }
     }
     
@@ -247,9 +286,18 @@ class ViewController: JSQMessagesViewController, VLDContextSheetDelegate {
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         let message: Message = messages[indexPath.item]
         if let avatar = avatars[message.senderId()] {
+            if message.isAnony() == "true" {
+                setupAvatarImage(message.senderAnonymousName(), avatarImageUrl: message.avatarImageUrl(), incoming: false, isAnony: "true", anonyAvatar: "ano.png")
+                return avatars[message.senderAnonymousName()]
+            }
             return avatar
         } else {
-            setupAvatarImage(message.senderId(), avatarImageUrl: message.avatarImageUrl(), incoming: true)
+            if message.isAnony() == "true" {
+                setupAvatarImage(message.senderAnonymousName(), avatarImageUrl: message.avatarImageUrl(), incoming: true, isAnony: "true", anonyAvatar: "ano.png")
+                return avatars[message.senderAnonymousName()]
+            }
+//            setupAvatarImage(message.senderId(), avatarImageUrl: message.avatarImageUrl(), incoming: true)
+            setupAvatarImage(message.senderId(), avatarImageUrl: message.avatarImageUrl(), incoming: true, isAnony: "false", anonyAvatar: "ano.png")
             return avatars[message.senderId()]
         }
 //        return self.incomingAvatar
@@ -271,6 +319,50 @@ class ViewController: JSQMessagesViewController, VLDContextSheetDelegate {
         return cell
     }
     
+    // name above bubble
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item]
+        println("hi")
+        // sent by self, skip
+        if message.senderId() == self.senderId {
+            return nil
+        }
+        
+        // same as previous sender, skip
+        if indexPath.item > 0 {
+            let previousMessage = messages[indexPath.item - 1]
+            if previousMessage.senderId() == message.senderId() {
+                // check if anonied, if not its still same, no need to change
+                if previousMessage.isAnony() == message.isAnony() {
+                    return nil
+                }
+            }
+        }
+        
+        println("sender is \(message.senderId())")
+        return NSAttributedString(string: message.senderId())
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        let message = messages[indexPath.item]
+        
+        if message.senderId() == self.senderId {
+            return CGFloat(0.0)
+        }
+        
+        if indexPath.item > 0 {
+            let previousMessage = messages[indexPath.item - 1]
+            if previousMessage.senderId() == message.senderId() {
+                // check if anonied, if not its still same, no need to change
+                if previousMessage.isAnony() == message.isAnony() {
+                    //                    return kJSQMessagesCollectionViewCellLabelHeightDefault
+                    return CGFloat(0.0)
+                }
+            }
+        }
+        
+        return kJSQMessagesCollectionViewCellLabelHeightDefault
+    }
     
     // determine counts of message
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
